@@ -5,6 +5,7 @@ indiaCases = data(1,1:end-1);
 
 Ndays = 60;
 % Plot indian cases
+h = figure;
 plot(indiaCases, '.b','MarkerSize',12)
 grid on; hold on;
 xlabel('Days since 22 Jan');
@@ -18,4 +19,6 @@ isolatedDays = 1:(numel(indiaCases));
 model1 = fit(isolatedDays', isolatedData', 'exp1');
 
 plot(model1(1:Ndays),'-.r','LineWidth',1);
+
+saveas(h,'.\images\graph.png');
 
