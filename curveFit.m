@@ -29,7 +29,12 @@ model1 = fit(isolatedDays', isolatedData', 'exp1');
 
 % plot fitted curve
 plot(dayVec,model1(dayVec),'-.r','LineWidth',1);
-legend('Actual Data','Fitted Curve');
+
+% Poly fit 5
+model2 = polyfit(isolatedDays', isolatedData', 5);
+plot(dayVec,polyval(model2,dayVec),'-.g','LineWidth',1);
+legend('Actual Data','Fitted Curve exp', 'Fitted Curve poly10');
+
 
 % Save data
 saveas(h,'.\images\graph.png');
@@ -37,7 +42,12 @@ modelOverviewStr = evalc('model1');
 modelOverviewStr = regexprep(modelOverviewStr, '%', '%%');
 fid = fopen('README.md','w+');
 
-fileData = '# Current Exponential Fit\n\n![](./images/graph.png)\n\n';
+fileData = '# Current Fits\n\n![](./images/graph.png)\n\n';
 fprintf(fid,fileData);
-fprintf(fid, "```\n" + modelOverviewStr + "\n```");
+fprintf(fid, "\n\n### Exp\n\n```\n" + modelOverviewStr + "\n```");
+
+modelOverviewStr = evalc('model2');
+modelOverviewStr = regexprep(modelOverviewStr, '%', '%%');
+
+fprintf(fid, "\n\n### 5th Order Poly\n\n```\n" + modelOverviewStr + "\n```");
 fclose(fid);
