@@ -27,7 +27,17 @@ isolatedData = indiaCases(1:numel(indiaCases));
 isolatedDays = 0:(numel(indiaCases)-1);
 model1 = fit(isolatedDays', isolatedData', 'exp1');
 
-% plot fitted curve and save 
+% plot fitted curve
 plot(dayVec,model1(dayVec),'-.r','LineWidth',1);
-saveas(h,'.\images\graph.png');
+legend('Actual Data','Fitted Curve');
 
+% Save data
+saveas(h,'.\images\graph.png');
+modelOverviewStr = evalc('model1');
+modelOverviewStr = regexprep(modelOverviewStr, '%', '%%');
+fid = fopen('README.md','w+');
+
+fileData = '# Current Exponential Fit\n\n![](./images/graph.png)\n\n';
+fprintf(fid,fileData);
+fprintf(fid, "```\n" + modelOverviewStr + "\n```");
+fclose(fid);
