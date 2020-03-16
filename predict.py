@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np 
 from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit
-file = pd.read_csv("time_series_19-covid-Confirmed.csv")
+file = pd.read_csv("./COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv")
 
 file.set_index('Country/Region', inplace=True)
 cases = file.loc['India'][3:][:]
@@ -27,5 +27,6 @@ plt.plot(days, logisitc(days, *popt), 'r-',label='fit: k=%5.3f, l=%5.3f ,x0=%5.3
 plt.xlabel('Days')
 plt.ylabel('Cases in India')
 plt.legend()
-plt.savefig('py_curves.png')
+plt.grid()
+plt.savefig('images/py_curves.png')
 plt.show()
