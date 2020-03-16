@@ -30,10 +30,13 @@ model1 = fit(isolatedDays', isolatedData', 'exp1');
 % plot fitted curve
 plot(dayVec,model1(dayVec),'-.r','LineWidth',1);
 
-% Poly fit 5
-model2 = polyfit(isolatedDays', isolatedData', 5);
-plot(dayVec,polyval(model2,dayVec),'-.g','LineWidth',1);
-legend('Actual Data','Fitted Curve exp', 'Fitted Curve poly10');
+% 4 days ago prediction
+isolatedData = indiaCases(1:numel(indiaCases)-5);
+isolatedDays = 0:(numel(indiaCases)-1-5);
+model2 = fit(isolatedDays', isolatedData', 'exp1');
+
+plot(dayVec,model2(dayVec),'-.g','LineWidth',1);
+legend('Actual Data','Current Trend', 'Trend 5 days ago');
 
 
 % Save data
