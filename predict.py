@@ -21,7 +21,7 @@ def plotGraph():
     plt.ylim((0,400))
     plt.grid()
     plt.savefig('images/py_curves.png')
-    plt.show()
+    #plt.show()
 
 
 file = pd.read_csv("./COVID-19/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv")
