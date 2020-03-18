@@ -8,7 +8,7 @@ def logisitc(x, k, l, x0 = 0):
     return (l/(1 + np.exp(-k*(x-x0))))
 
 def exponential(x,a,b,c):
-    return a * np.exp(-b * x - c) 
+    return a * np.exp(b * x - c) 
 
 def plotGraph():
     plt.plot(predictDays, logisitc(predictDays, *popt), 'r--',label='logistic: k=%5.3f, l=%5.3f ,x0=%5.3f'% tuple(popt))
