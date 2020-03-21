@@ -2,11 +2,8 @@
 
 **UPDATED EVERY DAY**
 
-## Logistic Curve Fit
+## Exponential Fit
 
 ![](./images/py_curves.png)
 
-## Exponential Fit
-
-![](./images/graph.png)
 

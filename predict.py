@@ -11,7 +11,7 @@ def exponential(x,a,b,c):
     return a * np.exp(b * x - c) 
 
 def plotGraph():
-    plt.plot(predictDays, logisitc(predictDays, *popt), 'r--',label='logistic: k=%5.3f, l=%5.3f ,x0=%5.3f'% tuple(popt))
+    # plt.plot(predictDays, logisitc(predictDays, *popt), 'r--',label='logistic: k=%5.3f, l=%5.3f ,x0=%5.3f'% tuple(popt))
     plt.plot(predictDays, exponential(predictDays, *poptexp), 'g--',label='exp: a=%5.3f, b=%5.3f, c=%5.3f'% tuple(poptexp))
     plt.plot(days, file.loc['India'][3:,],'o',color='blue',markersize=3, label = 'data')    
     plt.xlabel('Days')
@@ -36,5 +36,5 @@ predictDays = np.array(range(1,70))
 poptexp, pcovexp = curve_fit(exponential, days, cases)
 
 # logistic curve fitting
-popt, pcov = curve_fit(logisitc, days, cases)
+# popt, pcov = curve_fit(logisitc, days, cases) 
 plotGraph()
