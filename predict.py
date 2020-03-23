@@ -15,10 +15,10 @@ def plotGraph():
     plt.plot(predictDays, exponential(predictDays, *poptexp), 'g--',label='exp: a=%5.3f, b=%5.3f, c=%5.3f'% tuple(poptexp))
     plt.plot(days, file.loc['India'][3:,],'o',color='blue',markersize=3, label = 'data')    
     plt.xlabel('Days')
-    plt.ylabel('Cases in India')
+    plt.ylabel('Cases')
     plt.legend()
     plt.xlim((0,70))
-    plt.ylim((0,400))
+    plt.ylim((0,800))
     plt.grid()
     plt.savefig('images/py_curves.png')
     #plt.show()
@@ -33,7 +33,7 @@ days = (np.arange(cases.shape[0]).astype(np.float64))
 predictDays = np.array(range(1,70))
 
 # exp curve fit
-poptexp, pcovexp = curve_fit(exponential, days, cases)
+poptexp, pcovexp = curve_fit(exponential, days, cases, maxfev=3000, p0=[6, 0.1, 6])
 
 # logistic curve fitting
 # popt, pcov = curve_fit(logisitc, days, cases) 
